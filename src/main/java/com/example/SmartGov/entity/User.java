@@ -1,5 +1,8 @@
 package com.example.SmartGov.entity;
 
+import com.example.SmartGov.enums.Gender;
+import com.example.SmartGov.enums.ROLES;
+import com.example.SmartGov.enums.State;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -44,9 +47,11 @@ public class User {
     @Column(nullable = false , length = 10, unique = true)
     private String mobileNumber;
 
-    private String address;
+    private State States;
 
-    private Role role;
+    private String district;
+
+    private ROLES role;
 
     @Column(nullable = false)
     private LocalDate createdAt;
@@ -55,7 +60,7 @@ public class User {
     protected void onCreate() {
         this.createdAt = LocalDate.now();
         if (this.role == null) {
-            this.role = Role.CITIZEN;
+            this.role = ROLES.CITIZENS;
         }
     }
     

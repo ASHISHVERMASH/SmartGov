@@ -1,6 +1,8 @@
 package com.example.SmartGov.dto;
 
-import com.example.SmartGov.entity.Role;
+import com.example.SmartGov.enums.Gender;
+import com.example.SmartGov.enums.ROLES;
+import com.example.SmartGov.enums.State;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,8 +24,9 @@ public class userDto {
     private String aadharNumber;
     private String email;
     private String mobileNumber;
-    private String address;
-    private Role role;
+    private State state;
+    private Gender gender;
+    private ROLES role;
     private LocalDate createdAt;
 
 
