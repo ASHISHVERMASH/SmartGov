@@ -1,10 +1,9 @@
-package com.example.SmartGov.entity;
+package com.example.SmartGov.dto;
 
 import com.example.SmartGov.enums.District;
 import com.example.SmartGov.enums.Gender;
 import com.example.SmartGov.enums.ROLES;
 import com.example.SmartGov.enums.State;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,58 +11,25 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
-@Entity
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(
-        name = "Citizens", uniqueConstraints = {
-                @UniqueConstraint(columnNames = "email"),
-                @UniqueConstraint(columnNames = "aadharNumber")
-}
-)
+@Getter
+@Setter
 
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UserDto {
+
     private Long userId;
-
-    @Column(nullable = false)
     private String firstName;
-
-    @Column(nullable = false)
     private String lastName;
-
     private LocalDate dateOfBirth;
-
-    private Gender gender;
-
-    @Column(nullable = false , length = 12,unique = true)
     private Long aadharNumber;
-
-    @Column(nullable = false, unique = true)
     private String email;
-
-    @Column(nullable = false , length = 10, unique = true)
     private Long mobileNumber;
-
-    private State States;
-
+    private State state;
     private District district;
-
+    private Gender gender;
     private ROLES role;
-
-    @Column(nullable = false)
     private LocalDate createdAt;
-
-    @PrePersist
-    protected void onCreate() {
-        this.createdAt = LocalDate.now();
-        if (this.role == null) {
-            this.role = ROLES.CITIZENS;
-        }
-    }
 
     public Long getUserId() {
         return userId;
@@ -97,14 +63,6 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
     public Long getAadharNumber() {
         return aadharNumber;
     }
@@ -129,12 +87,12 @@ public class User {
         this.mobileNumber = mobileNumber;
     }
 
-    public State getStates() {
-        return States;
+    public State getState() {
+        return state;
     }
 
-    public void setStates(State states) {
-        States = states;
+    public void setState(State state) {
+        this.state = state;
     }
 
     public District getDistrict() {
@@ -143,6 +101,14 @@ public class User {
 
     public void setDistrict(District district) {
         this.district = district;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     public ROLES getRole() {
