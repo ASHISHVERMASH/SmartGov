@@ -92,16 +92,23 @@ Postgresql database used for structured data storage and persistence.
 SmartGov/
 ├── frontend/
 │   ├── src/
-│   │   ├── app/
-│   │   │   ├── components/          # Reusable UI components
-│   │   │   ├── pages/               # Application pages (Dashboard, Login, etc.)
-│   │   │   ├── services/            # API service calls (HTTP requests)
-│   │   │   ├── guards/              # Route guards for authentication
-│   │   │   ├── models/              # Interfaces and types
-│   │   └── assets/                  # Images, icons, and static files
-│   ├── package.json                 # Frontend dependencies
-│   ├── angular.json                 # Angular configuration
-│   └── tailwind.config.js           # Tailwind CSS configuration
+│   │   ├── components/          # Reusable UI components (Navbar, Button, etc.)
+│   │   ├── pages/               # Pages (Dashboard, Login, Reports, etc.)
+│   │   ├── services/            # API service calls (Axios, fetch)
+│   │   ├── context/             # React Context for global state/auth
+│   │   ├── hooks/               # Custom React hooks (useAuth, useFetch, etc.)
+│   │   ├── utils/               # Helper functions (formatDate, validation)
+│   │   ├── assets/              # Images, icons, static files
+│   │   ├── App.js               # Root component
+│   │   ├── index.js             # Entry point
+│   │   └── index.css            # Global styles
+│   ├── package.json             # React dependencies
+│   ├── tailwind.config.js       # Tailwind CSS configuration
+│   ├── postcss.config.js        # Tailwind/PostCSS setup
+│   ├── .env                     # Environment variables (e.g. API URL)
+│   └── public/
+│       ├── index.html           # Main HTML file
+│       └── favicon.ico
 
 ├── backend/
 │   ├── src/
