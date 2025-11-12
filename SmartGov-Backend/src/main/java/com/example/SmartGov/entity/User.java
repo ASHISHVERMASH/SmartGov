@@ -9,8 +9,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -52,9 +54,11 @@ public class User {
 
     private District district;
 
+    @Enumerated(EnumType.STRING)
     private ROLES role;
 
     @Column(nullable = false)
+    @CreatedDate
     private LocalDate createdAt;
 
     @Column(nullable = false , unique = true)
@@ -69,6 +73,18 @@ public class User {
         if (this.role == null) {
             this.role = ROLES.CITIZENS;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(getUserId(), user.getUserId()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getDateOfBirth(), user.getDateOfBirth()) && getGender() == user.getGender() && Objects.equals(getAadharNumber(), user.getAadharNumber()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getMobileNumber(), user.getMobileNumber()) && getStates() == user.getStates() && getDistrict() == user.getDistrict() && getRole() == user.getRole() && Objects.equals(getCreatedAt(), user.getCreatedAt()) && Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getPassword(), user.getPassword());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getUserId(), getFirstName(), getLastName(), getDateOfBirth(), getGender(), getAadharNumber(), getEmail(), getMobileNumber(), getStates(), getDistrict(), getRole(), getCreatedAt(), getUsername(), getPassword());
     }
 
     public Long getUserId() {
